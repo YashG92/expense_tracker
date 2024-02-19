@@ -1,4 +1,5 @@
 import 'package:expense_tracker/screens/login_screen.dart';
+import 'package:expense_tracker/widgets/add_transactions.dart';
 import 'package:expense_tracker/widgets/hero_card.dart';
 import 'package:expense_tracker/widgets/transaction_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -24,6 +25,16 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       isLogoutLoading = false;
     });
+  }
+
+  _dialogBuilder(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: AddTransaction(),
+          );
+        });
   }
 
   @override
@@ -52,6 +63,16 @@ class _HomeScreenState extends State<HomeScreen> {
           HeroCard(),
           TransactionCard(),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _dialogBuilder(context);
+        },
+        backgroundColor: Colors.lightBlue,
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
     );
   }
