@@ -10,12 +10,11 @@ class CategoryDropDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Check if cattype matches any value in homeExpensesCategories
     bool isCatTypeValid = cattype != null &&
         appIcons.homeExpensesCategories.any((element) => element['name'] == cattype);
 
     return DropdownButton<String>(
-      value: isCatTypeValid ? cattype : null, // Set value to null if cattype is invalid
+      value: isCatTypeValid ? cattype : null,
       isExpanded: true,
       hint: Text("Select Category"),
       items: appIcons.homeExpensesCategories
