@@ -2,7 +2,7 @@ import 'package:expense_tracker/utils/icons_list.dart';
 import 'package:flutter/material.dart';
 
 class CategoryDropDown extends StatelessWidget {
-  CategoryDropDown({super.key, this.cattype, required this.onChanged});
+  CategoryDropDown({Key? key, this.cattype, required this.onChanged}) : super(key: key);
   final String? cattype;
   final ValueChanged<String?> onChanged;
 
@@ -10,27 +10,33 @@ class CategoryDropDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Check if cattype matches any value in homeExpensesCategories
+    bool isCatTypeValid = cattype != null &&
+        appIcons.homeExpensesCategories.any((element) => element['name'] == cattype);
+
     return DropdownButton<String>(
-        value: cattype,
-        isExpanded: true,
-        hint: Text("Select Category"),
-        items: appIcons.homeExpensesCategories
-            .map((e) => DropdownMenuItem<String>(
-                value: e['name'],
-                child: Row(
-                  children: [
-                    Icon(
-                      e['icon'],
-                      color: Colors.black54,
-                    ),
-                    SizedBox(width: 10,),
-                    Text(
-                      e['name'],
-                      style: TextStyle(color: Colors.black45),
-                    ),
-                  ],
-                )))
-            .toList(),
-        onChanged: onChanged);
+      value: isCatTypeValid ? cattype : null, // Set value to null if cattype is invalid
+      isExpanded: true,
+      hint: Text("Select Category"),
+      items: appIcons.homeExpensesCategories
+          .map<DropdownMenuItem<String>>((e) => DropdownMenuItem<String>(
+        value: e['name'],
+        child: Row(
+          children: [
+            Icon(
+              e['icon'],
+              color: Colors.black54,
+            ),
+            SizedBox(width: 10,),
+            Text(
+              e['name'],
+              style: TextStyle(color: Colors.black45),
+            ),
+          ],
+        ),
+      ))
+          .toList(),
+      onChanged: onChanged,
+    );
   }
 }

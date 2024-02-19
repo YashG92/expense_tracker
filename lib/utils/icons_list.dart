@@ -3,7 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AppIcons {
   final List<Map<String, dynamic>> homeExpensesCategories = [
-    {"name": "Fuel Filling", "icon": FontAwesomeIcons.gasPump},
+    { "name": "Fuel Filling",
+      "icon": FontAwesomeIcons.gasPump,
+    },
     {"name": "Groceries", "icon": FontAwesomeIcons.basketShopping},
     {"name": "Dining Out", "icon": FontAwesomeIcons.utensils},
     {"name": "Utilities", "icon": FontAwesomeIcons.water},
