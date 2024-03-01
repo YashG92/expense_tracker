@@ -10,7 +10,7 @@ class HeroCard extends StatelessWidget {
     return Container(
       color: Colors.lightBlue,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Padding(
             padding: const EdgeInsets.all(15.0),
@@ -24,13 +24,19 @@ class HeroCard extends StatelessWidget {
                       height: 1.2,
                       fontWeight: FontWeight.w700),
                 ),
-                Text(
-                  "100000",
-                  style: TextStyle(
-                      fontSize: 40,
-                      color: Colors.white,
-                      height: 1.2,
-                      fontWeight: FontWeight.w700),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.currency_rupee),
+                    Text(
+                      "100000",
+                      style: TextStyle(
+                          fontSize: 40,
+                          color: Colors.white,
+                          height: 1.2,
+                          fontWeight: FontWeight.w700),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -86,12 +92,17 @@ class CardOne extends StatelessWidget {
                     "Credit",
                     style: TextStyle(color: color, fontSize: 14),
                   ),
-                  Text(
-                    "5000",
-                    style: TextStyle(
-                        color: color,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold),
+                  Row(
+                    children: [
+                      Icon(Icons.currency_rupee),
+                      Text(
+                        "5000",
+                        style: TextStyle(
+                            color: color,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   )
                 ],
               ),

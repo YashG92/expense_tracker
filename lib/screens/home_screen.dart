@@ -41,9 +41,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.lightBlue,
+        leading: Icon(Icons.account_balance_wallet_outlined,color: Colors.white,),
+          backgroundColor: Color(0x8C34A996),
           title: Text(
-            "Hello",
+            "Expense Tracker",
             style: TextStyle(color: Colors.white),
           ),
           actions: [
@@ -56,13 +57,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     : Icon(
                         Icons.exit_to_app,
                         color: Colors.white,
-                      ))
-          ]),
-      body: Column(
-        children: [
-          HeroCard(),
-          TransactionCard(),
-        ],
+                      )),
+          ],
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.blueAccent,Colors.lightBlue],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              )
+            ),
+          ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeroCard(),
+            TransactionCard(),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
