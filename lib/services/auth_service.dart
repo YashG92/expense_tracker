@@ -1,14 +1,17 @@
 import 'package:expense_tracker/screens/dashboard.dart';
+import 'package:expense_tracker/services/db.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthService {
+  var db = Db();
   createUser(data, context) async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: data['email'],
         password: data['password'],
       );
+      await db.addUser(data, context);
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => Dashboard()));
     } catch (e) {
