@@ -56,7 +56,7 @@ class TransactCard extends StatelessWidget {
             children: [
               Expanded(child: Text("${data['title']}")),
               Text(
-                "₹ ${data['amount']}",
+                "${data['type']== 'credit' ? '+' : '-'}₹ ${data['amount']}",
                 style: TextStyle(color: data['type'] == 'credit'
                   ? Colors.green
                   : Colors.red ),
@@ -74,7 +74,7 @@ class TransactCard extends StatelessWidget {
                           color: Colors.grey, fontSize: 13)),
                   Spacer(),
                   Text(
-                    "${data['remainingAmount']}",
+                    "₹ ${data['remainingAmount']}",
                     style:
                         TextStyle(color: Colors.grey, fontSize: 13),
                   )
