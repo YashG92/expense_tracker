@@ -1,5 +1,6 @@
 // import 'package:expense_tracker/screens/sign_up.dart';
 import 'package:expense_tracker/firebase_options.dart';
+import 'package:expense_tracker/screens/splash_screen.dart';
 import 'package:expense_tracker/widgets/auth_gate.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
             child: child!);
       },
       debugShowCheckedModeBanner: false,
-      home: AuthGate(),
+      home: SplashScreen(),
     );
   }
 }

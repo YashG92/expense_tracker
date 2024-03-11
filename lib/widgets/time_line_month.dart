@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class TimeLineMonth extends StatefulWidget {
-  const TimeLineMonth({super.key});
+  const TimeLineMonth({super.key, required this.onChanged});
+  final ValueChanged<String?> onChanged;
 
   @override
   State<TimeLineMonth> createState() => _TimeLineMonthState();
@@ -49,6 +50,7 @@ class _TimeLineMonthState extends State<TimeLineMonth> {
         onTap: (){
           setState(() {
             currentMonth = months[index];
+            widget.onChanged(months[index]);
           });
           scrollToSelectedMonth();
         },
